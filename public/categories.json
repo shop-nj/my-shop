@@ -1,0 +1,26 @@
+[
+  {
+    "id": "misc",
+    "displayName": "Miscellaneous",
+    "description": "Items that do not fit other categories",
+    "order": 3
+  },
+  {
+    "id": "electronics",
+    "displayName": "Electronics",
+    "description": "Electronic gadgets and devices",
+    "order": 1
+  },
+  {
+    "id": "furniture",
+    "displayName": "Furniture",
+    "description": "Home and office furniture",
+    "order": 2
+  },
+  {
+    "id": "books",
+    "displayName": "Books",
+    "description": "Books and magazines",
+    "order": 4
+  }
+]

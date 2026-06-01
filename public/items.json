@@ -1,0 +1,1186 @@
+[
+  {
+    "id": 1,
+    "createdOn": "2026-05-31T12:00:00",
+    "displayName": "Wireless Noise-Cancelling Headphones",
+    "category": "electronics",
+    "description": "Premium over-ear headphones with active noise cancellation, 30-hour battery life, and studio-quality sound.",
+    "imagesFolder": "electronics/headphones",
+    "price": [
+      {
+        "text": "Standard",
+        "value": "120",
+        "discounted": "99"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Technical Specs",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Battery Life",
+              "value": "30 hours"
+            },
+            {
+              "order": 2,
+              "name": "Bluetooth",
+              "value": "5.2"
+            },
+            {
+              "order": 3,
+              "name": "Driver Size",
+              "value": "40mm"
+            },
+            {
+              "order": 4,
+              "name": "Frequency Response",
+              "value": "20Hz – 20kHz"
+            },
+            {
+              "order": 5,
+              "name": "Impedance",
+              "value": "32Ω"
+            },
+            {
+              "order": 6,
+              "name": "Weight",
+              "value": "250g"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Connectivity",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Wireless Range",
+              "value": "Up to 10m"
+            },
+            {
+              "order": 2,
+              "name": "Charging",
+              "value": "USB-C, 2hr full charge"
+            },
+            {
+              "order": 3,
+              "name": "Multi-device",
+              "value": "2 devices simultaneously"
+            },
+            {
+              "order": 4,
+              "name": "3.5mm Jack",
+              "value": "Yes (wired mode)"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "In the Box",
+          "type": "details",
+          "order": 3,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Included",
+              "value": "Headphones, USB-C cable, 3.5mm cable, carrying case, quick-start guide"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 4,
+          "text": "Covered by a 1-year limited warranty against defects in materials and workmanship. Contact us for support or replacement."
+        }
+      }
+    ],
+    "images": [
+      "main.jpg",
+      "angle.jpg",
+      "detail.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "createdOn": "2026-05-30T10:00:00",
+    "displayName": "Pro Laptop 15\"",
+    "category": "electronics",
+    "description": "Thin and light laptop with a stunning display, all-day battery life, and powerful performance for work and creativity.",
+    "imagesFolder": "electronics/laptop",
+    "price": [
+      {
+        "text": "8GB / 256GB",
+        "value": "999"
+      },
+      {
+        "text": "16GB / 512GB",
+        "value": "1299",
+        "discounted": "1199"
+      },
+      {
+        "text": "32GB / 1TB",
+        "value": "1699"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Performance",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Processor",
+              "value": "12-core CPU"
+            },
+            {
+              "order": 2,
+              "name": "GPU",
+              "value": "Integrated 19-core GPU"
+            },
+            {
+              "order": 3,
+              "name": "RAM Options",
+              "value": "8GB / 16GB / 32GB"
+            },
+            {
+              "order": 4,
+              "name": "Storage",
+              "value": "256GB / 512GB / 1TB SSD"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Display",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Size",
+              "value": "15.3 inches"
+            },
+            {
+              "order": 2,
+              "name": "Resolution",
+              "value": "2880 × 1864"
+            },
+            {
+              "order": 3,
+              "name": "Brightness",
+              "value": "500 nits (1000 nits HDR)"
+            },
+            {
+              "order": 4,
+              "name": "Refresh Rate",
+              "value": "120Hz ProMotion"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Battery & Ports",
+          "type": "details",
+          "order": 3,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Battery Life",
+              "value": "Up to 18 hours"
+            },
+            {
+              "order": 2,
+              "name": "Charging",
+              "value": "MagSafe 3, 140W"
+            },
+            {
+              "order": 3,
+              "name": "Ports",
+              "value": "3× USB-C, HDMI, SD card, 3.5mm"
+            },
+            {
+              "order": 4,
+              "name": "Weight",
+              "value": "1.86 kg"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 4,
+          "text": "All configurations include a 90-day complimentary technical support and a 1-year limited warranty. AppleCare+ available for extended coverage."
+        }
+      }
+    ],
+    "images": [
+      "main.jpg",
+      "open.jpg",
+      "ports.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "createdOn": "2026-05-29T09:00:00",
+    "displayName": "Smart Watch Series X",
+    "category": "electronics",
+    "description": "Advanced health tracking, GPS, always-on display, and up to 36 hours of battery life in a sleek aluminium case.",
+    "imagesFolder": "electronics/smartwatch",
+    "price": [
+      {
+        "text": "41mm",
+        "value": "399"
+      },
+      {
+        "text": "45mm",
+        "value": "429",
+        "discounted": "399"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Health & Fitness",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Heart Rate",
+              "value": "Continuous optical sensor"
+            },
+            {
+              "order": 2,
+              "name": "Blood Oxygen",
+              "value": "Yes"
+            },
+            {
+              "order": 3,
+              "name": "ECG",
+              "value": "Yes"
+            },
+            {
+              "order": 4,
+              "name": "Sleep Tracking",
+              "value": "Yes"
+            },
+            {
+              "order": 5,
+              "name": "Crash Detection",
+              "value": "Yes"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Features",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "GPS",
+              "value": "Precision dual-frequency"
+            },
+            {
+              "order": 2,
+              "name": "Water Resistance",
+              "value": "50m (WR50)"
+            },
+            {
+              "order": 3,
+              "name": "Display",
+              "value": "Always-on Retina LTPO"
+            },
+            {
+              "order": 4,
+              "name": "Battery",
+              "value": "Up to 36 hours"
+            },
+            {
+              "order": 5,
+              "name": "Connectivity",
+              "value": "Wi-Fi, Bluetooth 5.3, NFC"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "Compatible with iPhone XS or later running iOS 17 or later. Band is interchangeable — works with all watch bands 41mm or 45mm."
+        }
+      }
+    ],
+    "images": [
+      "main.jpg",
+      "wrist.jpg",
+      "face.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "createdOn": "2026-05-28T08:00:00",
+    "displayName": "Portable Bluetooth Speaker",
+    "category": "electronics",
+    "description": "360° sound, 24-hour playtime, fully waterproof (IP67), and rugged design for outdoor adventures.",
+    "imagesFolder": "electronics/speaker",
+    "price": [
+      {
+        "text": "Standard",
+        "value": "149",
+        "discounted": "129"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Sound",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Output",
+              "value": "20W RMS"
+            },
+            {
+              "order": 2,
+              "name": "Sound Stage",
+              "value": "360° omnidirectional"
+            },
+            {
+              "order": 3,
+              "name": "Bass Radiator",
+              "value": "Passive dual radiators"
+            },
+            {
+              "order": 4,
+              "name": "Frequency Range",
+              "value": "60Hz – 20kHz"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Build & Battery",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Battery Life",
+              "value": "24 hours"
+            },
+            {
+              "order": 2,
+              "name": "Charging",
+              "value": "USB-C, 3hr full charge"
+            },
+            {
+              "order": 3,
+              "name": "Water Rating",
+              "value": "IP67 waterproof"
+            },
+            {
+              "order": 4,
+              "name": "Weight",
+              "value": "590g"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "Two speakers can be paired together for true stereo sound. Built-in microphone for speakerphone calls."
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "createdOn": "2026-05-27T14:00:00",
+    "displayName": "Contemporary 3-Seater Sofa",
+    "category": "furniture",
+    "description": "Comfortable linen fabric sofa with solid hardwood frame, removable cushion covers, and sturdy legs. Perfect for modern living rooms.",
+    "imagesFolder": "furniture/sofa",
+    "price": [
+      {
+        "text": "Linen Gray",
+        "value": "850",
+        "discounted": "699"
+      },
+      {
+        "text": "Velvet Navy",
+        "value": "950",
+        "discounted": "799"
+      },
+      {
+        "text": "Leather Brown",
+        "value": "1200"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Dimensions",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Overall",
+              "value": "220 × 90 × 85 cm"
+            },
+            {
+              "order": 2,
+              "name": "Seat Depth",
+              "value": "58 cm"
+            },
+            {
+              "order": 3,
+              "name": "Seat Height",
+              "value": "42 cm"
+            },
+            {
+              "order": 4,
+              "name": "Leg Height",
+              "value": "16 cm"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Materials",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Frame",
+              "value": "Solid hardwood"
+            },
+            {
+              "order": 2,
+              "name": "Cushion Fill",
+              "value": "High-density foam + fibre blend"
+            },
+            {
+              "order": 3,
+              "name": "Cover",
+              "value": "Removable, machine washable"
+            },
+            {
+              "order": 4,
+              "name": "Legs",
+              "value": "Solid walnut"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Assembly & Care",
+          "type": "details",
+          "order": 3,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Assembly",
+              "value": "Legs attach in minutes — no tools required"
+            },
+            {
+              "order": 2,
+              "name": "Cleaning",
+              "value": "Spot clean fabric; legs wipe with damp cloth"
+            },
+            {
+              "order": 3,
+              "name": "Weight Capacity",
+              "value": "350 kg"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 4,
+          "text": "Delivered in 2–3 business days. White-glove delivery (room of choice, packaging removed) available at checkout for an additional fee."
+        }
+      }
+    ],
+    "images": [
+      "main.jpg",
+      "side.jpg",
+      "fabric.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "createdOn": "2026-05-26T11:00:00",
+    "displayName": "Ergonomic Office Chair",
+    "category": "furniture",
+    "description": "Fully adjustable mesh-back chair with lumbar support, 4D armrests, and breathable seat. Built for 8+ hour workdays.",
+    "imagesFolder": "furniture/chair",
+    "price": [
+      {
+        "text": "Black Mesh",
+        "value": "549",
+        "discounted": "449"
+      },
+      {
+        "text": "Gray Mesh",
+        "value": "549",
+        "discounted": "449"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Adjustability",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Seat Height",
+              "value": "43–53 cm"
+            },
+            {
+              "order": 2,
+              "name": "Armrests",
+              "value": "4D (height, width, depth, pivot)"
+            },
+            {
+              "order": 3,
+              "name": "Recline",
+              "value": "95°–135° with tilt lock"
+            },
+            {
+              "order": 4,
+              "name": "Lumbar",
+              "value": "Height + depth adjustable"
+            },
+            {
+              "order": 5,
+              "name": "Headrest",
+              "value": "Height + angle adjustable"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Build",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Back Material",
+              "value": "Breathable mesh"
+            },
+            {
+              "order": 2,
+              "name": "Seat Material",
+              "value": "Foam + woven fabric"
+            },
+            {
+              "order": 3,
+              "name": "Base",
+              "value": "Aluminium 5-star base"
+            },
+            {
+              "order": 4,
+              "name": "Casters",
+              "value": "PU rubber, hardfloor safe"
+            },
+            {
+              "order": 5,
+              "name": "Max Weight",
+              "value": "150 kg"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "Certified by BIFMA for commercial use. Comes with a 5-year warranty on all mechanical components and 2-year warranty on upholstery."
+        }
+      }
+    ],
+    "images": [
+      "main.jpg",
+      "back.jpg",
+      "side.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "createdOn": "2026-05-25T09:30:00",
+    "displayName": "5-Shelf Solid Wood Bookshelf",
+    "category": "furniture",
+    "description": "Sturdy freestanding bookshelf crafted from solid pine wood with adjustable shelving. Fits books, decor, and storage boxes.",
+    "imagesFolder": "furniture/bookshelf",
+    "price": [
+      {
+        "text": "Natural Pine",
+        "value": "299"
+      },
+      {
+        "text": "White Painted",
+        "value": "319"
+      },
+      {
+        "text": "Walnut Stain",
+        "value": "349",
+        "discounted": "299"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Dimensions",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Overall",
+              "value": "80 × 35 × 180 cm (W×D×H)"
+            },
+            {
+              "order": 2,
+              "name": "Shelf Depth",
+              "value": "30 cm"
+            },
+            {
+              "order": 3,
+              "name": "Shelf Spacing",
+              "value": "Adjustable, 25–40 cm"
+            },
+            {
+              "order": 4,
+              "name": "Load per Shelf",
+              "value": "Up to 30 kg"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Materials & Finish",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Material",
+              "value": "Solid pine wood"
+            },
+            {
+              "order": 2,
+              "name": "Finish",
+              "value": "Natural oil / painted / stained"
+            },
+            {
+              "order": 3,
+              "name": "Hardware",
+              "value": "Stainless steel shelf pins"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "Anti-tip strap included and recommended for installation. Assembly takes approximately 30 minutes; all tools included."
+        }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "createdOn": "2026-05-24T16:00:00",
+    "displayName": "The Last Frontier — Sci-Fi Novel",
+    "category": "books",
+    "description": "A sweeping space opera following humanity's first contact with an alien civilisation at the edge of the known universe.",
+    "imagesFolder": "books/scifi",
+    "price": [
+      {
+        "text": "Paperback",
+        "value": "15"
+      },
+      {
+        "text": "Hardcover",
+        "value": "28"
+      },
+      {
+        "text": "eBook",
+        "value": "9"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Book Details",
+    "details": [
+      {
+        "section": {
+          "header": "Publication",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Author",
+              "value": "Jane Doe"
+            },
+            {
+              "order": 2,
+              "name": "Publisher",
+              "value": "Orbit Books"
+            },
+            {
+              "order": 3,
+              "name": "Published",
+              "value": "March 2026"
+            },
+            {
+              "order": 4,
+              "name": "Pages",
+              "value": "480"
+            },
+            {
+              "order": 5,
+              "name": "Language",
+              "value": "English"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Awards & Recognition",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Award",
+              "value": "Hugo Award Nominee 2026"
+            },
+            {
+              "order": 2,
+              "name": "Rating",
+              "value": "4.8 / 5 (2,400 reviews)"
+            },
+            {
+              "order": 3,
+              "name": "Genre",
+              "value": "Space Opera, Hard Sci-Fi"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "\"A breathtaking debut that will redefine the genre. Doe's prose is luminous and her world-building is second to none.\" — The Guardian"
+        }
+      }
+    ],
+    "images": [
+      "main.jpg",
+      "back.jpg",
+      "pages.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "createdOn": "2026-05-23T10:00:00",
+    "displayName": "Clean Code in Practice",
+    "category": "books",
+    "description": "A hands-on guide to writing readable, maintainable software. Covers refactoring, SOLID principles, testing, and real-world patterns.",
+    "imagesFolder": "books/programming",
+    "price": [
+      {
+        "text": "Paperback",
+        "value": "45"
+      },
+      {
+        "text": "eBook",
+        "value": "25"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Book Details",
+    "details": [
+      {
+        "section": {
+          "header": "Publication",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Author",
+              "value": "Robert Marks"
+            },
+            {
+              "order": 2,
+              "name": "Publisher",
+              "value": "Dev Press"
+            },
+            {
+              "order": 3,
+              "name": "Published",
+              "value": "January 2026"
+            },
+            {
+              "order": 4,
+              "name": "Pages",
+              "value": "320"
+            },
+            {
+              "order": 5,
+              "name": "ISBN",
+              "value": "978-1-23456-789-0"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Topics Covered",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Chapter 1–4",
+              "value": "Naming, functions, comments"
+            },
+            {
+              "order": 2,
+              "name": "Chapter 5–8",
+              "value": "Error handling, boundaries, tests"
+            },
+            {
+              "order": 3,
+              "name": "Chapter 9–12",
+              "value": "SOLID principles, design patterns"
+            },
+            {
+              "order": 4,
+              "name": "Chapter 13–16",
+              "value": "Refactoring, concurrency, deployment"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "Source code for all examples is freely available on GitHub. Suitable for developers at all levels — from junior to senior."
+        }
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "createdOn": "2026-05-22T08:00:00",
+    "displayName": "The Modern Kitchen Cookbook",
+    "category": "books",
+    "description": "Over 200 seasonal recipes from farm to table, with techniques from Michelin-starred chefs simplified for the home cook.",
+    "imagesFolder": "books/cookbook",
+    "price": [
+      {
+        "text": "Hardcover",
+        "value": "55",
+        "discounted": "42"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Book Details",
+    "details": [
+      {
+        "section": {
+          "header": "Publication",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Author",
+              "value": "Chef Maria Russo"
+            },
+            {
+              "order": 2,
+              "name": "Publisher",
+              "value": "Culinary Arts Press"
+            },
+            {
+              "order": 3,
+              "name": "Published",
+              "value": "October 2025"
+            },
+            {
+              "order": 4,
+              "name": "Pages",
+              "value": "352"
+            },
+            {
+              "order": 5,
+              "name": "Photography",
+              "value": "Full colour, 200+ photos"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Content",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Recipes",
+              "value": "200+ seasonal recipes"
+            },
+            {
+              "order": 2,
+              "name": "Chapters",
+              "value": "Spring, Summer, Autumn, Winter"
+            },
+            {
+              "order": 3,
+              "name": "Dietary Labels",
+              "value": "Vegetarian, vegan, GF flagged"
+            },
+            {
+              "order": 4,
+              "name": "Techniques",
+              "value": "Step-by-step photo guides"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "Winner of the 2025 James Beard Foundation Award for Best General Cookbook. A timeless gift for any food lover."
+        }
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "createdOn": "2026-05-21T13:00:00",
+    "displayName": "Luxury Gift Box",
+    "category": "misc",
+    "description": "A beautifully curated gift box with artisan chocolates, a ceramic mug, handwritten card, and seasonal extras. Perfect for any occasion.",
+    "imagesFolder": "misc/giftbox",
+    "price": [
+      {
+        "text": "Small (3 items)",
+        "value": "35"
+      },
+      {
+        "text": "Medium (5 items)",
+        "value": "55",
+        "discounted": "49"
+      },
+      {
+        "text": "Large (8 items)",
+        "value": "89"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Gift Box Details",
+    "details": [
+      {
+        "section": {
+          "header": "What's Inside",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Chocolates",
+              "value": "Artisan dark & milk assortment (100g)"
+            },
+            {
+              "order": 2,
+              "name": "Mug",
+              "value": "Handmade ceramic, 350ml"
+            },
+            {
+              "order": 3,
+              "name": "Card",
+              "value": "Custom handwritten message"
+            },
+            {
+              "order": 4,
+              "name": "Medium adds",
+              "value": "Loose-leaf tea tin, soy candle"
+            },
+            {
+              "order": 5,
+              "name": "Large adds",
+              "value": "Bath salts, journal, linen pouch"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Packaging",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Box",
+              "value": "Rigid lid-and-base, kraft finish"
+            },
+            {
+              "order": 2,
+              "name": "Filler",
+              "value": "Recycled paper shred"
+            },
+            {
+              "order": 3,
+              "name": "Ribbon",
+              "value": "Satin, colour of your choice"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "All items are ethically sourced. Gift boxes are assembled by hand and dispatched within 1 business day. Same-day dispatch available before 12pm."
+        }
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "createdOn": "2026-05-20T10:00:00",
+    "displayName": "Luxury Scented Candle Set",
+    "category": "misc",
+    "description": "Set of 3 hand-poured soy wax candles with cotton wicks and premium fragrance oils. Up to 50 hours of burn time per candle.",
+    "imagesFolder": "misc/candle",
+    "price": [
+      {
+        "text": "Set of 3",
+        "value": "48",
+        "discounted": "38"
+      },
+      {
+        "text": "Set of 6",
+        "value": "89"
+      }
+    ],
+    "currency": "USD",
+    "detailsSectionHeader": "Product Information",
+    "details": [
+      {
+        "section": {
+          "header": "Specifications",
+          "type": "details",
+          "order": 1,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Wax",
+              "value": "100% natural soy wax"
+            },
+            {
+              "order": 2,
+              "name": "Wick",
+              "value": "Lead-free cotton"
+            },
+            {
+              "order": 3,
+              "name": "Burn Time",
+              "value": "Up to 50 hours per candle"
+            },
+            {
+              "order": 4,
+              "name": "Size",
+              "value": "200ml / 8oz each"
+            },
+            {
+              "order": 5,
+              "name": "Container",
+              "value": "Matte black glass jar"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "header": "Scents",
+          "type": "details",
+          "order": 2,
+          "dataFields": [
+            {
+              "order": 1,
+              "name": "Scent 1",
+              "value": "Cedarwood & Sandalwood"
+            },
+            {
+              "order": 2,
+              "name": "Scent 2",
+              "value": "Vanilla & Amber"
+            },
+            {
+              "order": 3,
+              "name": "Scent 3",
+              "value": "Eucalyptus & Mint"
+            }
+          ]
+        }
+      },
+      {
+        "section": {
+          "order": 3,
+          "text": "For best results, trim the wick to 5mm before each use and allow the wax to pool to the edge on first burn. Keep away from drafts and never leave unattended."
+        }
+      }
+    ]
+  }
+]
