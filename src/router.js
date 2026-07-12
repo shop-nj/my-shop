@@ -4,13 +4,15 @@ import CategoryPage from './components/CategoryPage.vue';
 import ItemDetail from './components/ItemDetail.vue';
 import JsonGenerator from './components/JsonGenerator.vue';
 import CartPage from './components/CartPage.vue';
+import GalleryPage from './components/GalleryPage.vue';
 
 const routes = [
   { path: '/', component: LandingPage },
   { path: '/category/:id', component: CategoryPage },
   { path: '/item/:id', component: ItemDetail },
   { path: '/json-generator', component: JsonGenerator },
-  { path: '/cart', component: CartPage }
+  { path: '/cart', component: CartPage },
+  { path: '/gallery', component: GalleryPage }
 ];
 
 const router = createRouter({

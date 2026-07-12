@@ -44,7 +44,7 @@
           <Transition name="img-slide" mode="out-in">
             <img
               :key="activeIndex"
-              :src="`${$baseUrl}images/${folder}/${images[activeIndex]}`"
+              :src="resolveSrc(images[activeIndex])"
               :alt="`Image ${activeIndex + 1}`"
               class="max-w-full max-h-full object-contain rounded-lg shadow-2xl select-none"
               draggable="false"
@@ -79,7 +79,7 @@
             @click="activeIndex = i"
           >
             <img
-              :src="`${$baseUrl}images/${folder}/${img}`"
+              :src="resolveSrc(img)"
               :alt="`Thumbnail ${i + 1}`"
               class="w-full h-full object-cover"
             />
@@ -96,9 +96,18 @@ import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 const props = defineProps({
   modelValue: { type: Boolean, default: false },
   images: { type: Array, required: true },
-  folder: { type: String, required: true },
+  folder: { type: String, default: '' },
+  basePath: { type: String, default: '' },
   startIndex: { type: Number, default: 0 }
 })
+
+// resolveSrc supports two modes:
+// - folder mode (product images): images/{folder}/{filename}
+// - basePath mode (e.g. gallery): {basePath}/{filename}
+const resolveSrc = (img) =>
+  props.basePath
+    ? `${import.meta.env.BASE_URL}${props.basePath}/${img}`
+    : `${import.meta.env.BASE_URL}images/${props.folder}/${img}`
 
 const emit = defineEmits(['update:modelValue'])
 

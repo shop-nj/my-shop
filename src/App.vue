@@ -72,6 +72,20 @@
           </span>
         </router-link>
 
+        <!-- Gallery -->
+        <router-link
+          to="/gallery"
+          class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-brand-100 hover:text-brand-800 transition-colors"
+          active-class="bg-brand-200 text-brand-800"
+          @click="sidebarOpen = false"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z" />
+          </svg>
+          Gallery
+        </router-link>
+
         <!-- Categories -->
         <div class="mt-5">
           <p class="px-3 mb-1.5 text-[11px] font-semibold text-brand-400 uppercase tracking-widest">
