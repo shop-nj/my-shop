@@ -192,6 +192,24 @@
     </div>
   </section>
 
+  <!-- 7. ALPHABET CARDS -->
+  <section class="panel" id="panel-alphabet">
+    <div class="card">
+      <h2>Alphabet Cards</h2>
+      <div class="big-emoji" id="alphaLetter" style="font-size:7em; font-weight:bold; color:var(--primary-dark);">A</div>
+      <div class="word-hint" id="alphaExampleWord">🍎 apple</div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="speakAlphaLetter()">🔊 Hear Letter</button>
+        <button class="btn btn-primary" onclick="speakAlphaWord()">🔊 Hear Word</button>
+      </div>
+      <div class="row" style="margin-top:14px;">
+        <button class="btn btn-secondary" onclick="prevAlpha()">⬅ Previous</button>
+        <button class="btn btn-secondary" onclick="nextAlpha()">Next ➡</button>
+      </div>
+      <div class="progress" id="alphaProgress"></div>
+    </div>
+  </section>
+
   <!-- 5. FLASHCARDS -->
   <section class="panel" id="panel-flashcard">
     <div class="card">
@@ -215,8 +233,12 @@
 <footer>
   Works fully offline in your browser. Uses your device's built-in voice (text-to-speech) and, if available, speech recognition for the "Try Saying It" feature.
   <div class="settings">
-    Speaking rate:
-    <input type="range" id="rateSlider" min="0.5" max="1.2" step="0.1" value="0.8" style="vertical-align:middle;">
+    Speaking speed: <span id="rateValue">0.8x</span><br>
+    <input type="range" id="rateSlider" min="0.3" max="1.5" step="0.1" value="0.8" style="vertical-align:middle; width:220px;">
+  </div>
+  <div class="settings">
+    Voice:
+    <select id="voiceSelect" style="font-size:1em; padding:4px;"></select>
   </div>
 </footer>
 
@@ -313,8 +335,43 @@ function speakText(text, rate){
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.rate = rate || parseFloat(document.getElementById('rateSlider').value);
+  const voiceSelect = document.getElementById('voiceSelect');
+  if(voiceSelect && voiceSelect.value){
+    const chosen = availableVoices.find(v => v.name === voiceSelect.value);
+    if(chosen) u.voice = chosen;
+  }
   window.speechSynthesis.speak(u);
 }
+
+let availableVoices = [];
+function voicePriority(v){
+  if(v.lang === 'en-IN') return 0;
+  if(v.lang === 'en-US') return 1;
+  if(v.lang && v.lang.startsWith('en')) return 2;
+  return 3;
+}
+function populateVoiceList(){
+  availableVoices = window.speechSynthesis.getVoices();
+  availableVoices.sort((a,b)=> voicePriority(a) - voicePriority(b));
+  const select = document.getElementById('voiceSelect');
+  if(!select) return;
+  const prev = select.value;
+  select.innerHTML = '';
+  availableVoices.forEach(v=>{
+    const opt = document.createElement('option');
+    opt.value = v.name;
+    opt.textContent = `${v.name} (${v.lang})`;
+    select.appendChild(opt);
+  });
+  if(prev && availableVoices.some(v=>v.name===prev)) select.value = prev;
+}
+if('speechSynthesis' in window){
+  populateVoiceList();
+  window.speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+const rateSliderEl = document.getElementById('rateSlider');
+const rateValueEl = document.getElementById('rateValue');
+rateSliderEl.addEventListener('input', ()=>{ rateValueEl.textContent = parseFloat(rateSliderEl.value).toFixed(1) + 'x'; });
 
 function shuffle(arr){ return [...arr].sort(()=>Math.random()-0.5); }
 
@@ -326,6 +383,7 @@ const tabs = [
   {id:'sentence', label:'✏️ Sentence Builder'},
   {id:'flashcard', label:'🃏 Flashcards'},
   {id:'gallery', label:'🗂 Word Gallery'},
+  {id:'alphabet', label:'🔤 Alphabet'},
 ];
 const nav = document.getElementById('tabNav');
 tabs.forEach((t,i)=>{
@@ -559,6 +617,35 @@ function renderGallery(){
 }
 renderGalleryFilters();
 renderGallery();
+
+/* ---------------- 7. Alphabet Cards ---------------- */
+const ALPHABET = [
+  {letter:"A", word:"apple", emoji:"🍎"}, {letter:"B", word:"banana", emoji:"🍌"},
+  {letter:"C", word:"cat", emoji:"🐱"}, {letter:"D", word:"dog", emoji:"🐶"},
+  {letter:"E", word:"egg", emoji:"🥚"}, {letter:"F", word:"fish", emoji:"🐟"},
+  {letter:"G", word:"grapes", emoji:"🍇"}, {letter:"H", word:"house", emoji:"🏠"},
+  {letter:"I", word:"ice cream", emoji:"🍦"}, {letter:"J", word:"juice", emoji:"🧃"},
+  {letter:"K", word:"key", emoji:"🔑"}, {letter:"L", word:"lamp", emoji:"💡"},
+  {letter:"M", word:"moon", emoji:"🌙"}, {letter:"N", word:"newspaper", emoji:"📰"},
+  {letter:"O", word:"orange", emoji:"🍊"}, {letter:"P", word:"phone", emoji:"📱"},
+  {letter:"Q", word:"queen", emoji:"👸"}, {letter:"R", word:"rabbit", emoji:"🐰"},
+  {letter:"S", word:"sun", emoji:"☀️"}, {letter:"T", word:"tree", emoji:"🌳"},
+  {letter:"U", word:"umbrella", emoji:"☂️"}, {letter:"V", word:"vehicle", emoji:"🚗"},
+  {letter:"W", word:"water", emoji:"💧"}, {letter:"X", word:"x-ray", emoji:"🩻"},
+  {letter:"Y", word:"yogurt", emoji:"🍦"}, {letter:"Z", word:"zebra", emoji:"🦓"},
+];
+let alphaIndex = 0;
+function renderAlpha(){
+  const a = ALPHABET[alphaIndex];
+  document.getElementById('alphaLetter').textContent = a.letter;
+  document.getElementById('alphaExampleWord').textContent = `${a.emoji} ${a.word}`;
+  document.getElementById('alphaProgress').textContent = `Letter ${alphaIndex+1} of ${ALPHABET.length}`;
+}
+function speakAlphaLetter(){ speakText(ALPHABET[alphaIndex].letter.toLowerCase()); }
+function speakAlphaWord(){ speakText(ALPHABET[alphaIndex].word); }
+function nextAlpha(){ alphaIndex = (alphaIndex+1) % ALPHABET.length; renderAlpha(); }
+function prevAlpha(){ alphaIndex = (alphaIndex-1+ALPHABET.length) % ALPHABET.length; renderAlpha(); }
+renderAlpha();
 </script>
 </body>
 </html>
