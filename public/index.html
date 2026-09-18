@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speech Practice Tools</title>
+<style>
+  :root{
+    --bg:#f4f7fb; --card:#ffffff; --primary:#2b6cb0; --primary-dark:#1a4e8a;
+    --accent:#38a169; --danger:#e53e3e; --text:#1a202c; --muted:#4a5568;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg); color:var(--text); margin:0; padding:0;
+    font-size:20px; line-height:1.4;
+  }
+  header{
+    background:var(--primary); color:#fff; padding:20px; text-align:center;
+  }
+  header h1{margin:0; font-size:1.8em;}
+  header p{margin:6px 0 0; font-size:0.55em; opacity:0.9;}
+  nav{
+    display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+    padding:14px; background:#e2e8f0;
+  }
+  nav button{
+    font-size:1em; padding:14px 18px; border-radius:10px; border:none;
+    background:var(--card); color:var(--primary-dark); cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.15); min-width:150px;
+  }
+  nav button.active{background:var(--primary); color:#fff;}
+  main{max-width:800px; margin:0 auto; padding:20px;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .card{
+    background:var(--card); border-radius:16px; padding:30px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; margin-bottom:20px;
+  }
+  .big-emoji{font-size:6em; margin:10px 0;}
+  .word-hint{font-size:1.6em; letter-spacing:4px; font-weight:bold; min-height:1.4em; color:var(--primary-dark);}
+  .btn{
+    font-size:1.1em; padding:16px 22px; border-radius:12px; border:none;
+    cursor:pointer; margin:8px; min-width:130px; font-weight:600;
+  }
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-accent{background:var(--accent); color:#fff;}
+  .btn-danger{background:var(--danger); color:#fff;}
+  .btn-secondary{background:#edf2f7; color:var(--text);}
+  .btn:active{transform:scale(0.97);}
+  .row{display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
+  input[type=text]{
+    font-size:1.2em; padding:12px; border-radius:10px; border:2px solid #cbd5e0;
+    width:100%; max-width:400px; text-align:center;
+  }
+  .feedback{font-size:1.2em; margin-top:14px; font-weight:bold; min-height:1.4em;}
+  .feedback.correct{color:var(--accent);}
+  .feedback.incorrect{color:var(--danger);}
+  .syllables span{
+    display:inline-block; margin:0 4px; padding:6px 10px; border-radius:8px;
+    background:#ebf8ff; font-size:1.4em; font-weight:bold;
+  }
+  .syllables span.active{background:#f6ad55; color:#7c2d12;}
+  .sentence-bank{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:16px 0;}
+  .word-chip{
+    background:#edf2f7; padding:10px 16px; border-radius:20px; cursor:pointer;
+    font-size:1.1em; border:2px solid transparent;
+  }
+  .word-chip:hover{border-color:var(--primary);}
+  .sentence-output{
+    min-height:60px; font-size:1.4em; padding:14px; background:#f0fff4;
+    border-radius:10px; margin:14px 0; border:2px dashed #9ae6b4;
+  }
+  .category-list{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;}
+  .settings{font-size:0.9em; color:var(--muted); margin-top:10px;}
+  footer{text-align:center; padding:20px; color:var(--muted); font-size:0.85em;}
+  .progress{font-size:0.9em; color:var(--muted); margin-top:6px;}
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
+    gap:14px; margin-top:16px;
+  }
+  .gallery-item{
+    background:#fff; border-radius:14px; padding:14px 8px; box-shadow:0 1px 4px rgba(0,0,0,0.12);
+    cursor:pointer; border:2px solid transparent;
+  }
+  .gallery-item:hover, .gallery-item:focus{border-color:var(--primary);}
+  .gallery-item .emoji{font-size:2.6em; display:block;}
+  .gallery-item .name{font-size:0.9em; font-weight:600; margin-top:6px; display:block; word-break:break-word;}
+  .gallery-filters{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:6px;}
+  .gallery-filters button{
+    font-size:0.9em; padding:8px 14px; border-radius:16px; border:1px solid #cbd5e0;
+    background:#edf2f7; cursor:pointer;
+  }
+  .gallery-filters button.active{background:var(--primary); color:#fff; border-color:var(--primary);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🗣️ Speech Practice Tools</h1>
+  <p>Simple practice for word-finding and clear speech — for stroke recovery</p>
+</header>
+
+<nav id="tabNav"></nav>
+
+<main>
+
+  <!-- 1. WORD FINDING -->
+  <section class="panel" id="panel-naming">
+    <div class="card">
+      <h2>Name the Picture</h2>
+      <div class="big-emoji" id="namingEmoji">🍎</div>
+      <div class="word-hint" id="namingHint">&nbsp;</div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="speakCurrentNamingWord()">🔊 Hear Word</button>
+        <button class="btn btn-secondary" onclick="showHint()">💡 Hint (letters)</button>
+        <button class="btn btn-accent" onclick="revealNamingWord()">👁 Reveal Word</button>
+      </div>
+      <div class="row" style="margin-top:14px;">
+        <input type="text" id="namingInput" placeholder="Type the word here" autocomplete="off">
+        <button class="btn btn-primary" onclick="checkNamingWord()">Check</button>
+      </div>
+      <div class="feedback" id="namingFeedback">&nbsp;</div>
+      <div class="row">
+        <button class="btn btn-secondary" onclick="nextNamingWord()">➡ Next Word</button>
+      </div>
+      <div class="progress" id="namingProgress"></div>
+    </div>
+  </section>
+
+  <!-- 2. CATEGORY / WORD RETRIEVAL -->
+  <section class="panel" id="panel-category">
+    <div class="card">
+      <h2>Category Practice</h2>
+      <p>Say or type as many words as you can that belong to this category.</p>
+      <div class="word-hint" id="categoryName">Animals</div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="speakText(document.getElementById('categoryName').textContent)">🔊 Hear Category</button>
+        <button class="btn btn-secondary" onclick="newCategory()">🔄 New Category</button>
+      </div>
+      <div class="row" style="margin-top:14px;">
+        <input type="text" id="categoryInput" placeholder="Type a word, press Enter" autocomplete="off">
+      </div>
+      <div class="category-list" id="categoryAnswers"></div>
+      <div class="progress" id="categoryCount">0 words found</div>
+    </div>
+  </section>
+
+  <!-- 3. SYLLABLE / PRONUNCIATION PRACTICE -->
+  <section class="panel" id="panel-syllable">
+    <div class="card">
+      <h2>Say It Clearly — Syllable Practice</h2>
+      <div class="big-emoji" id="syllableEmoji">🍌</div>
+      <div class="syllables" id="syllableDisplay"></div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="speakSyllablesSlow()">🐢 Say Slowly</button>
+        <button class="btn btn-primary" onclick="speakSyllablesNormal()">🔊 Say Normally</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-accent" onclick="startListening('syllable')">🎤 Try Saying It</button>
+      </div>
+      <div class="feedback" id="syllableFeedback">&nbsp;</div>
+      <div class="row">
+        <button class="btn btn-secondary" onclick="nextSyllableWord()">➡ Next Word</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SENTENCE BUILDER -->
+  <section class="panel" id="panel-sentence">
+    <div class="card">
+      <h2>Build a Sentence</h2>
+      <p>Tap words in order to build a sentence, then hear it read aloud.</p>
+      <div class="sentence-output" id="sentenceOutput">Tap words below&hellip;</div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="speakText(document.getElementById('sentenceOutput').textContent)">🔊 Read Sentence</button>
+        <button class="btn btn-secondary" onclick="clearSentence()">🗑 Clear</button>
+        <button class="btn btn-secondary" onclick="newSentenceBank()">🔄 New Words</button>
+      </div>
+      <div class="sentence-bank" id="sentenceBank"></div>
+    </div>
+  </section>
+
+  <!-- 6. WORD GALLERY -->
+  <section class="panel" id="panel-gallery">
+    <div class="card">
+      <h2>Word Gallery</h2>
+      <p>Browse all practice words. Tap a card to hear it spoken.</p>
+      <div class="gallery-filters" id="galleryFilters"></div>
+      <div class="progress" id="galleryCount"></div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- 5. FLASHCARDS -->
+  <section class="panel" id="panel-flashcard">
+    <div class="card">
+      <h2>Flashcard Review</h2>
+      <div class="big-emoji" id="flashEmoji">🐶</div>
+      <div class="word-hint" id="flashWord" style="visibility:hidden;">dog</div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="speakText(document.getElementById('flashWord').textContent)">🔊 Hear Word</button>
+        <button class="btn btn-secondary" onclick="toggleFlashWord()">👁 Show/Hide Word</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-danger" onclick="rateFlash(false)">😕 Hard</button>
+        <button class="btn btn-accent" onclick="rateFlash(true)">😀 Easy</button>
+      </div>
+      <div class="progress" id="flashProgress"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Works fully offline in your browser. Uses your device's built-in voice (text-to-speech) and, if available, speech recognition for the "Try Saying It" feature.
+  <div class="settings">
+    Speaking rate:
+    <input type="range" id="rateSlider" min="0.5" max="1.2" step="0.1" value="0.8" style="vertical-align:middle;">
+  </div>
+</footer>
+
+<script>
+/* ---------------- Shared data ---------------- */
+const WORDS = [
+  {word:"apple", emoji:"🍎", cat:"food"},
+  {word:"banana", emoji:"🍌", cat:"food"},
+  {word:"dog", emoji:"🐶", cat:"animal"},
+  {word:"cat", emoji:"🐱", cat:"animal"},
+  {word:"house", emoji:"🏠", cat:"objects"},
+  {word:"car", emoji:"🚗", cat:"objects"},
+  {word:"book", emoji:"📖", cat:"objects"},
+  {word:"phone", emoji:"📱", cat:"objects"},
+  {word:"water", emoji:"💧", cat:"food"},
+  {word:"bread", emoji:"🍞", cat:"food"},
+  {word:"shoe", emoji:"👟", cat:"objects"},
+  {word:"chair", emoji:"🪑", cat:"objects"},
+  {word:"bird", emoji:"🐦", cat:"animal"},
+  {word:"fish", emoji:"🐟", cat:"animal"},
+  {word:"tree", emoji:"🌳", cat:"nature"},
+  {word:"sun", emoji:"☀️", cat:"nature"},
+  {word:"moon", emoji:"🌙", cat:"nature"},
+  {word:"clock", emoji:"⏰", cat:"objects"},
+  {word:"key", emoji:"🔑", cat:"objects"},
+  {word:"umbrella", emoji:"☂️", cat:"objects"},
+  {word:"cup", emoji:"☕", cat:"objects"},
+  {word:"spoon", emoji:"🥄", cat:"objects"},
+  {word:"table", emoji:"🍽️", cat:"objects"},
+  {word:"door", emoji:"🚪", cat:"objects"},
+  {word:"flower", emoji:"🌸", cat:"nature"},
+  {word:"orange", emoji:"🍊", cat:"food"},
+  {word:"grapes", emoji:"🍇", cat:"food"},
+  {word:"carrot", emoji:"🥕", cat:"food"},
+  {word:"cheese", emoji:"🧀", cat:"food"},
+  {word:"egg", emoji:"🥚", cat:"food"},
+  {word:"milk", emoji:"🥛", cat:"food"},
+  {word:"pizza", emoji:"🍕", cat:"food"},
+  {word:"cake", emoji:"🎂", cat:"food"},
+  {word:"coffee", emoji:"☕", cat:"food"},
+  {word:"rabbit", emoji:"🐰", cat:"animal"},
+  {word:"horse", emoji:"🐴", cat:"animal"},
+  {word:"cow", emoji:"🐮", cat:"animal"},
+  {word:"pig", emoji:"🐷", cat:"animal"},
+  {word:"duck", emoji:"🦆", cat:"animal"},
+  {word:"sheep", emoji:"🐑", cat:"animal"},
+  {word:"bear", emoji:"🐻", cat:"animal"},
+  {word:"butterfly", emoji:"🦋", cat:"animal"},
+  {word:"bee", emoji:"🐝", cat:"animal"},
+  {word:"bed", emoji:"🛏️", cat:"objects"},
+  {word:"lamp", emoji:"💡", cat:"objects"},
+  {word:"television", emoji:"📺", cat:"objects"},
+  {word:"computer", emoji:"💻", cat:"objects"},
+  {word:"glasses", emoji:"👓", cat:"objects"},
+  {word:"wallet", emoji:"👛", cat:"objects"},
+  {word:"scissors", emoji:"✂️", cat:"objects"},
+  {word:"pencil", emoji:"✏️", cat:"objects"},
+  {word:"newspaper", emoji:"📰", cat:"objects"},
+  {word:"mirror", emoji:"🪞", cat:"objects"},
+  {word:"towel", emoji:"🧻", cat:"objects"},
+  {word:"soap", emoji:"🧼", cat:"objects"},
+  {word:"toothbrush", emoji:"🪥", cat:"objects"},
+  {word:"medicine", emoji:"💊", cat:"objects"},
+  {word:"wheelchair", emoji:"🦽", cat:"objects"},
+  {word:"cane", emoji:"🦯", cat:"objects"},
+  {word:"bus", emoji:"🚌", cat:"vehicles"},
+  {word:"train", emoji:"🚆", cat:"vehicles"},
+  {word:"bicycle", emoji:"🚲", cat:"vehicles"},
+  {word:"airplane", emoji:"✈️", cat:"vehicles"},
+  {word:"boat", emoji:"⛵", cat:"vehicles"},
+  {word:"ambulance", emoji:"🚑", cat:"vehicles"},
+  {word:"hospital", emoji:"🏥", cat:"places"},
+  {word:"school", emoji:"🏫", cat:"places"},
+  {word:"store", emoji:"🏪", cat:"places"},
+  {word:"church", emoji:"⛪", cat:"places"},
+  {word:"park", emoji:"🏞️", cat:"places"},
+  {word:"bathroom", emoji:"🚽", cat:"places"},
+  {word:"kitchen", emoji:"🍳", cat:"places"},
+  {word:"rain", emoji:"🌧️", cat:"nature"},
+  {word:"snow", emoji:"❄️", cat:"nature"},
+  {word:"cloud", emoji:"☁️", cat:"nature"},
+  {word:"star", emoji:"⭐", cat:"nature"},
+  {word:"mountain", emoji:"⛰️", cat:"nature"},
+  {word:"beach", emoji:"🏖️", cat:"nature"},
+];
+
+const CATEGORIES = [
+  "Animals","Fruits","Things in a kitchen","Colors","Family members",
+  "Things you wear","Vehicles","Things at the beach","Weather words","Parts of the body"
+];
+
+function speakText(text, rate){
+  if(!('speechSynthesis' in window)){ alert('Speech not supported on this browser.'); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = rate || parseFloat(document.getElementById('rateSlider').value);
+  window.speechSynthesis.speak(u);
+}
+
+function shuffle(arr){ return [...arr].sort(()=>Math.random()-0.5); }
+
+/* ---------------- Navigation ---------------- */
+const tabs = [
+  {id:'naming', label:'🍎 Word Finding'},
+  {id:'category', label:'📋 Categories'},
+  {id:'syllable', label:'🗣 Pronunciation'},
+  {id:'sentence', label:'✏️ Sentence Builder'},
+  {id:'flashcard', label:'🃏 Flashcards'},
+  {id:'gallery', label:'🗂 Word Gallery'},
+];
+const nav = document.getElementById('tabNav');
+tabs.forEach((t,i)=>{
+  const b = document.createElement('button');
+  b.textContent = t.label;
+  b.onclick = ()=>showPanel(t.id, b);
+  if(i===0) b.classList.add('active');
+  nav.appendChild(b);
+});
+function showPanel(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+showPanel('naming', nav.children[0]);
+
+/* ---------------- 1. Naming ---------------- */
+let namingPool = shuffle(WORDS);
+let namingIndex = 0;
+let namingHintLevel = 0;
+function currentNamingWord(){ return namingPool[namingIndex % namingPool.length]; }
+function renderNaming(){
+  const w = currentNamingWord();
+  document.getElementById('namingEmoji').textContent = w.emoji;
+  document.getElementById('namingHint').textContent = '\u00A0';
+  document.getElementById('namingInput').value = '';
+  document.getElementById('namingFeedback').textContent = '\u00A0';
+  document.getElementById('namingFeedback').className = 'feedback';
+  namingHintLevel = 0;
+  document.getElementById('namingProgress').textContent = `Word ${ (namingIndex % namingPool.length) + 1 } of ${namingPool.length}`;
+}
+function speakCurrentNamingWord(){ speakText(currentNamingWord().word); }
+function showHint(){
+  namingHintLevel++;
+  const w = currentNamingWord().word;
+  const shown = w.split('').map((ch,i)=> i < namingHintLevel ? ch : '_').join(' ');
+  document.getElementById('namingHint').textContent = shown;
+}
+function revealNamingWord(){
+  document.getElementById('namingHint').textContent = currentNamingWord().word;
+}
+function checkNamingWord(){
+  const val = document.getElementById('namingInput').value.trim().toLowerCase();
+  const correct = currentNamingWord().word.toLowerCase();
+  const fb = document.getElementById('namingFeedback');
+  if(val === correct){
+    fb.textContent = '✅ Correct!';
+    fb.className = 'feedback correct';
+  } else {
+    fb.textContent = '❌ Try again or use a hint';
+    fb.className = 'feedback incorrect';
+  }
+}
+function nextNamingWord(){
+  namingIndex++;
+  if(namingIndex % namingPool.length === 0) namingPool = shuffle(WORDS);
+  renderNaming();
+}
+document.getElementById('namingInput').addEventListener('keydown', e=>{ if(e.key==='Enter') checkNamingWord(); });
+renderNaming();
+
+/* ---------------- 2. Category ---------------- */
+let categoryFound = [];
+function newCategory(){
+  const cat = CATEGORIES[Math.floor(Math.random()*CATEGORIES.length)];
+  document.getElementById('categoryName').textContent = cat;
+  categoryFound = [];
+  renderCategoryAnswers();
+}
+function renderCategoryAnswers(){
+  const list = document.getElementById('categoryAnswers');
+  list.innerHTML = '';
+  categoryFound.forEach(w=>{
+    const chip = document.createElement('span');
+    chip.className = 'word-chip';
+    chip.textContent = w;
+    list.appendChild(chip);
+  });
+  document.getElementById('categoryCount').textContent = `${categoryFound.length} word${categoryFound.length===1?'':'s'} found`;
+}
+document.getElementById('categoryInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter'){
+    const val = e.target.value.trim();
+    if(val){ categoryFound.push(val); renderCategoryAnswers(); }
+    e.target.value = '';
+  }
+});
+newCategory();
+
+/* ---------------- 3. Syllable practice ---------------- */
+const SYLLABLE_WORDS = [
+  {word:"ba-na-na", emoji:"🍌", plain:"banana"},
+  {word:"wa-ter", emoji:"💧", plain:"water"},
+  {word:"um-brel-la", emoji:"☂️", plain:"umbrella"},
+  {word:"el-e-phant", emoji:"🐘", plain:"elephant"},
+  {word:"hos-pi-tal", emoji:"🏥", plain:"hospital"},
+  {word:"tel-e-vi-sion", emoji:"📺", plain:"television"},
+  {word:"com-pu-ter", emoji:"💻", plain:"computer"},
+  {word:"med-i-cine", emoji:"💊", plain:"medicine"},
+  {word:"fam-i-ly", emoji:"👨‍👩‍👧", plain:"family"},
+  {word:"gro-cer-y", emoji:"🛒", plain:"grocery"},
+];
+let syllableIndex = 0;
+function renderSyllable(){
+  const w = SYLLABLE_WORDS[syllableIndex % SYLLABLE_WORDS.length];
+  document.getElementById('syllableEmoji').textContent = w.emoji;
+  const disp = document.getElementById('syllableDisplay');
+  disp.innerHTML = '';
+  w.word.split('-').forEach(part=>{
+    const span = document.createElement('span');
+    span.textContent = part;
+    disp.appendChild(span);
+  });
+  document.getElementById('syllableFeedback').textContent = '\u00A0';
+  document.getElementById('syllableFeedback').className = 'feedback';
+}
+function speakSyllablesSlow(){
+  const w = SYLLABLE_WORDS[syllableIndex % SYLLABLE_WORDS.length];
+  speakText(w.word.split('-').join(', '), 0.55);
+}
+function speakSyllablesNormal(){
+  const w = SYLLABLE_WORDS[syllableIndex % SYLLABLE_WORDS.length];
+  speakText(w.plain, parseFloat(document.getElementById('rateSlider').value));
+}
+function nextSyllableWord(){ syllableIndex++; renderSyllable(); }
+renderSyllable();
+
+/* Speech recognition for "try saying it" (naming + syllable) */
+let recognition = null;
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+if(SpeechRec){ recognition = new SpeechRec(); recognition.lang = 'en-US'; recognition.interimResults=false; }
+function startListening(mode){
+  const fbEl = document.getElementById(mode+'Feedback');
+  if(!recognition){
+    fbEl.textContent = 'Speech recognition not supported in this browser.';
+    fbEl.className = 'feedback incorrect';
+    return;
+  }
+  fbEl.textContent = '🎙 Listening...';
+  fbEl.className = 'feedback';
+  const target = (mode==='syllable') ? SYLLABLE_WORDS[syllableIndex % SYLLABLE_WORDS.length].plain : currentNamingWord().word;
+  recognition.onresult = (e)=>{
+    const said = e.results[0][0].transcript.trim().toLowerCase();
+    if(said.includes(target.toLowerCase())){
+      fbEl.textContent = `✅ Heard: "${said}" — Great job!`;
+      fbEl.className = 'feedback correct';
+    } else {
+      fbEl.textContent = `Heard: "${said}" — try again`;
+      fbEl.className = 'feedback incorrect';
+    }
+  };
+  recognition.onerror = ()=>{ fbEl.textContent = 'Could not hear you, try again.'; fbEl.className='feedback incorrect'; };
+  recognition.start();
+}
+
+/* ---------------- 4. Sentence builder ---------------- */
+const SENTENCE_WORD_BANK = ["I","want","need","like","the","a","my","go","to","doctor",
+  "water","help","home","today","yesterday","feel","good","bad","hungry","tired",
+  "please","thank","you","can","cannot","see","family","pain","medicine","walk"];
+let sentenceWords = [];
+function newSentenceBank(){
+  const bank = document.getElementById('sentenceBank');
+  bank.innerHTML = '';
+  shuffle(SENTENCE_WORD_BANK).slice(0,14).forEach(w=>{
+    const chip = document.createElement('span');
+    chip.className = 'word-chip';
+    chip.textContent = w;
+    chip.onclick = ()=>{ sentenceWords.push(w); renderSentence(); };
+    bank.appendChild(chip);
+  });
+}
+function renderSentence(){
+  document.getElementById('sentenceOutput').textContent = sentenceWords.join(' ') || 'Tap words below…';
+}
+function clearSentence(){ sentenceWords = []; renderSentence(); }
+newSentenceBank();
+
+/* ---------------- 5. Flashcards ---------------- */
+let flashPool = shuffle(WORDS);
+let flashIndex = 0;
+let flashStats = {easy:0, hard:0};
+function renderFlash(){
+  const w = flashPool[flashIndex % flashPool.length];
+  document.getElementById('flashEmoji').textContent = w.emoji;
+  const wordEl = document.getElementById('flashWord');
+  wordEl.textContent = w.word;
+  wordEl.style.visibility = 'hidden';
+  document.getElementById('flashProgress').textContent = `Card ${(flashIndex % flashPool.length)+1} of ${flashPool.length} — Easy: ${flashStats.easy}, Hard: ${flashStats.hard}`;
+}
+function toggleFlashWord(){
+  const el = document.getElementById('flashWord');
+  el.style.visibility = (el.style.visibility === 'hidden') ? 'visible' : 'hidden';
+}
+function rateFlash(easy){
+  if(easy) flashStats.easy++; else flashStats.hard++;
+  flashIndex++;
+  if(flashIndex % flashPool.length === 0) flashPool = shuffle(WORDS);
+  renderFlash();
+}
+renderFlash();
+
+/* ---------------- 6. Word Gallery ---------------- */
+let galleryFilterCat = 'all';
+function renderGalleryFilters(){
+  const cats = ['all', ...Array.from(new Set(WORDS.map(w=>w.cat)))];
+  const wrap = document.getElementById('galleryFilters');
+  wrap.innerHTML = '';
+  cats.forEach(cat=>{
+    const b = document.createElement('button');
+    b.textContent = cat === 'all' ? `All (${WORDS.length})` : cat.charAt(0).toUpperCase()+cat.slice(1);
+    if(cat === galleryFilterCat) b.classList.add('active');
+    b.onclick = ()=>{ galleryFilterCat = cat; renderGalleryFilters(); renderGallery(); };
+    wrap.appendChild(b);
+  });
+}
+function renderGallery(){
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+  const items = WORDS.filter(w => galleryFilterCat==='all' || w.cat===galleryFilterCat);
+  document.getElementById('galleryCount').textContent = `${items.length} word${items.length===1?'':'s'} shown`;
+  items.forEach(w=>{
+    const card = document.createElement('div');
+    card.className = 'gallery-item';
+    card.tabIndex = 0;
+    card.innerHTML = `<span class="emoji">${w.emoji}</span><span class="name">${w.word}</span>`;
+    card.onclick = ()=> speakText(w.word);
+    card.onkeydown = (e)=>{ if(e.key==='Enter' || e.key===' ') speakText(w.word); };
+    grid.appendChild(card);
+  });
+}
+renderGalleryFilters();
+renderGallery();
+</script>
+</body>
+</html>
