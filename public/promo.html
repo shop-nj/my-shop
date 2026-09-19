@@ -76,6 +76,11 @@
   }
   .category-list{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;}
   .settings{font-size:0.9em; color:var(--muted); margin-top:10px;}
+  .controls-row{
+    display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start;
+    margin-top:24px; padding-top:16px; border-top:1px solid #e2e8f0;
+  }
+  .controls-row .settings{margin-top:0;}
   footer{text-align:center; padding:20px; color:var(--muted); font-size:0.85em;}
   .progress{font-size:0.9em; color:var(--muted); margin-top:6px;}
   .gallery-grid{
@@ -233,16 +238,18 @@
 
 </main>
 
-<footer>
-  Uses your device's built-in voice (text-to-speech) and, if available, speech recognition for the "Try Saying It" feature.
+<div id="controlsRow" class="controls-row">
   <div class="settings">
     Speaking speed: <span id="rateValue">0.8x</span><br>
-    <input type="range" id="rateSlider" min="0.3" max="1.5" step="0.1" value="0.8" style="vertical-align:middle; width:220px;">
+    <input type="range" id="rateSlider" min="0.3" max="1.5" step="0.1" value="0.8" style="vertical-align:middle; width:200px;">
   </div>
   <div class="settings">
     Voice:
     <select id="voiceSelect" style="font-size:1em; padding:4px;"></select>
   </div>
+</div>
+
+<footer>
 </footer>
 
 <script>
@@ -398,9 +405,13 @@ tabs.forEach((t,i)=>{
 });
 function showPanel(id, btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+id).classList.add('active');
+  const panel = document.getElementById('panel-'+id);
+  panel.classList.add('active');
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+  const card = panel.querySelector('.card');
+  const controlsRow = document.getElementById('controlsRow');
+  if(card && controlsRow) card.appendChild(controlsRow);
 }
 showPanel(tabs[0].id, nav.children[0]);
 
